@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+body {
+  background-color: #c8c8c8;
+}
+
 .button {
   background-color: #030303;
   color: white;
@@ -12,4 +16,5 @@
   border-radius: .5rem;
   font-size: larger;
   cursor: pointer;
+  margin-bottom: 2rem;
 }

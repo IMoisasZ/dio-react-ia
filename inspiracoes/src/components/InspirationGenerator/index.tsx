@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import inspirations from '../../data/inspirations'
 import FancyText from '../FancyText'
+import Color from '../Color'
 
 export default function InspiratorGenerator({
 	children,
@@ -11,14 +12,22 @@ export default function InspiratorGenerator({
 
 	const handleClick = () => {
 		// setIndex((index + 1) % inspirations.length) //Pegando uma frase após a outra na sequencia
-		setIndex(Math.floor(Math.random() * 9) + 1) //Pegando uma frase aleatória
+		setIndex(Math.floor(Math.random() * inspirations.length - 1) + 1) //Pegando uma frase aleatória
 	}
 
 	return (
 		<>
-			<p>Sua frase motivacional é:</p>
+			<p>
+				{inspiration.type === 'quote'
+					? 'Sua frase motivacional é:'
+					: 'Sua cor motivacional é:'}
+			</p>
 
-			{inspiration.type === 'quote' && <FancyText text={inspiration.value} />}
+			{inspiration.type === 'quote' ? (
+				<FancyText text={inspiration.value} />
+			) : (
+				<Color value={inspiration.value} />
+			)}
 
 			<button
 				className='button'
