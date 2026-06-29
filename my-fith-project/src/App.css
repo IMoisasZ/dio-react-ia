@@ -1,0 +1,43 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+  font-size: 1.3rem;
+}
+
+.button {
+  background-color: #646cff;
+  color: rgba(255, 255, 255, .85);
+  margin: 0 auto;
+  font-size: 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.dark-theme {
+  background-color: #242424;
+  color: rgba(255, 255, 255, .85);
+}
+
+.ligth-theme {
+  background-color: white;
+  color: #242424
+}
+
+.post {
+  background-color: #f2f2f2;
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.post img {
+  height: 300px;
+  border-radius: 8px;
+  object-fit: contain;
+}
+
+.post, .post img {
+  width: 300px;
+  border-radius: 8px;
+}

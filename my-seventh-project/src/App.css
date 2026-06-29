@@ -1,0 +1,19 @@
+#root {
+  max-width: 1280;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.list h1 {
+  font-size: 1.5rem;
+}
+
+.item {
+  background-color: #030303;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
