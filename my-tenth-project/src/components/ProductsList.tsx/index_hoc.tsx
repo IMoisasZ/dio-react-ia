@@ -1,40 +1,20 @@
 /** @format */
 
-import { useEffect, useState } from 'react'
-import { API_BASE_URL } from '../../settings'
 import ProductItem from '../ProductItem'
-import type { Product } from '../../interfaces/product'
+import withDataFetching from '../DataFetchingFunctionalComponents'
 
-export default function ProductsList() {
-	const [products, setProducts] = useState<Product[]>([])
-	const [isLoading, setIsLoading] = useState<boolean>(true)
+interface Product {
+	id: number | string
+	name: string
+	price: number
+	description: string
+}
 
-	useEffect(() => {
-		fetch(`${API_BASE_URL}/api/products`)
-			.then(async (response) => {
-				if (!response.ok) {
-					throw new Error("'An error ocurred when fetch products list'")
-				}
+interface ProductsListProps {
+	data: Product[]
+}
 
-				const data = await response.json()
-				setProducts(data)
-				setIsLoading(false)
-			})
-			.catch((error) => {
-				alert(error.message)
-				setIsLoading(false)
-			})
-	}, [])
-
-	if (isLoading) {
-		return (
-			<div>
-				<h2>Products</h2>
-				<p>Loading data</p>
-			</div>
-		)
-	}
-
+const ProductsList: React.FC<ProductsListProps> = ({ data: products }) => {
 	return (
 		<div>
 			<h2>Products:</h2>
@@ -49,3 +29,11 @@ export default function ProductsList() {
 		</div>
 	)
 }
+
+const ProductListWithData = withDataFetching(
+	'Products',
+	ProductsList,
+	'/api/products',
+)
+
+export default ProductListWithData

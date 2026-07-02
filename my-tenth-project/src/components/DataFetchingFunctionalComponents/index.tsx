@@ -1,14 +1,15 @@
+/** @format */
+
 import { useEffect, useState } from 'react'
 import { API_BASE_URL } from '../../settings'
-import type { Product } from '../../interfaces/product'
 
-const withDataFetching = (
+const withDataFetching = <T, P extends { data: T[] }>(
 	title: string,
-	WrapperComponent: React.FC,
+	WrapperComponent: React.ComponentType<P>,
 	endpoint: string,
 ) => {
-	return () => {
-		const [data, setData] = useState<Product[]>([])
+	return (props: Omit<P, 'data'>) => {
+		const [data, setData] = useState<T[]>([])
 		const [isLoading, setIsLoading] = useState<boolean>(true)
 		const [error, setError] = useState<string>('')
 		useEffect(() => {
@@ -59,7 +60,12 @@ const withDataFetching = (
 			)
 		}
 
-		return <WrapperComponent data={data} />
+		return (
+			<WrapperComponent
+				{...(props as P)}
+				data={data}
+			/>
+		)
 	}
 }
 

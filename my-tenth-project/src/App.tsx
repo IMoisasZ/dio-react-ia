@@ -1,12 +1,16 @@
 /** @format */
 
 import './App.css'
-import ProductList from './components/ProductsList.tsx/index.tsx'
+import ClientListWithData from './components/ClientList/index.tsx'
+import ProductListWithData from './components/ProductsList.tsx/index_hoc.tsx'
 
 function App() {
 	return (
 		<div>
-			<ProductList />
+			<>
+				<ProductListWithData />
+				<ClientListWithData />
+			</>
 		</div>
 	)
 }
